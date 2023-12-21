@@ -42,10 +42,6 @@ class Solution:
 class Solution:
     def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
 
-        if not root1:
-            return root2
-        if not root2:
-            return root1
         def merging(node1, node2):
             if not node1 and not node2:
                 return None
