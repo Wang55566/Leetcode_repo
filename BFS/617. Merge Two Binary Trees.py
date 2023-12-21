@@ -7,6 +7,7 @@ class TreeNode:
         self.left = left
         self.right = right
 
+# Iterative solution
 class Solution:
     def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
         if not root1:
@@ -36,3 +37,25 @@ class Solution:
                 node1.right = node2.right
 
         return root1
+
+# recusive solution
+class Solution:
+    def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
+
+        if not root1:
+            return root2
+        if not root2:
+            return root1
+        def merging(node1, node2):
+            if not node1 and not node2:
+                return None
+            elif not node1:
+                return node2
+            elif not node2:
+                return node1
+            node1.left = merging(node1.left, node2.left)
+            node1.right = merging(node1.right, node2.right)
+            node1.val += node2.val
+            return node1
+
+        return merging(root1, root2)
