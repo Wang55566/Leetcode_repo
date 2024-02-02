@@ -13,7 +13,6 @@ class Solution:
                 if currNode.val == target and not currNode.left and not currNode.right:
                     if not parentNode:
                         return None
-
                     if direction == "left":
                         parentNode.left = None
                     else:
