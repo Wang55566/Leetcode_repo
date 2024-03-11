@@ -19,8 +19,6 @@
 #                 recursive(node.left,res)
 #                 recursive(node.right,res)
 
-
-
 #         val_res1 = recursive(root1,res1)
 #         print("----------")
 #         val_res2 = recursive(root1,res2)
@@ -28,6 +26,7 @@
 #         if val_res1 == val_res2:
 #             return True
 #         return False
+
 # class Solution:
 #     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
 #         def recursive(node, leaves):
