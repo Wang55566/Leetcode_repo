@@ -28,19 +28,37 @@
 #         if val_res1 == val_res2:
 #             return True
 #         return False
+# class Solution:
+#     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+#         def recursive(node, leaves):
+#             if not node:
+#                 return leaves
+#             else:
+#                 if not node.left and not node.right:
+#                     leaves.append(node.val)
+#                 leaves = recursive(node.left, leaves)
+#                 leaves = recursive(node.right, leaves)
+#                 return leaves
+
+#         leaves1 = recursive(root1, [])
+#         leaves2 = recursive(root2, [])
+
+#         return leaves1 == leaves2
+
 class Solution:
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
-        def recursive(node, leaves):
-            if not node:
-                return leaves
-            else:
-                if not node.left and not node.right:
-                    leaves.append(node.val)
-                leaves = recursive(node.left, leaves)
-                leaves = recursive(node.right, leaves)
-                return leaves
 
-        leaves1 = recursive(root1, [])
-        leaves2 = recursive(root2, [])
+        root1_leaves = []
+        root2_leaves = []
+        def dfs(node, rootLeaves):
+            if(not node.left and not node.right):
+                rootLeaves.append(node.val)
+            if(node.left):
+                dfs(node.left, rootLeaves)
+            if(node.right):
+                dfs(node.right, rootLeaves)
 
-        return leaves1 == leaves2
+        dfs(root1, root1_leaves)
+        dfs(root2, root2_leaves)
+
+        return root1_leaves == root2_leaves
