@@ -8,11 +8,15 @@ class Solution:
     token_parse = tokens.split(":")
 
     curr = self.ingestion_data
+
     for i in range(len(token_parse)):
       if token_parse[i] not in curr:
-        curr[token_parse[i]] = {}
+        curr[token_parse[i]] = {'count': 1}
+      else:
+        curr[token_parse[i]]['count'] = 1
+
       curr = curr[token_parse[i]]
-    print(self.ingestion_data)
+
   def appearance(self, input):
     pass
 
